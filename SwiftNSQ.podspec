@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-	s.name                    = "RPGKit"
+	s.name                    = "SwiftNSQ"
 	s.version                 = "0.1"
 	s.summary                 = "A client for NSQ written in pure Swift"
 
