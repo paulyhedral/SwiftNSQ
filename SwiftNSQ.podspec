@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 	s.author                  = { "Paul Schifferer" => "paul@schifferers.net" }
 
 	s.source                  = { :git => "https://github.com/exsortis/SwiftNSQ.git", :tag => s.version.to_s }
-	s.source_files            = 'SwiftNSQ/*.{h,m,c,swift}'
+	s.source_files            = 'Sources/SwiftNSQ/**/*.{h,m,c,swift}'
 	s.frameworks              = 'Foundation'
 
 	s.ios.deployment_target   = '9.3'
