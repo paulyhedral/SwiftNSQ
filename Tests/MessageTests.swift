@@ -25,13 +25,20 @@ class MessageTests: XCTestCase {
     func testSerialization() throws {
 
         let data = "xyz".data(using: .utf8)!
-        let message = Message(body: data, timestamp: 0, attempts: 3)
+        var message = Message(body: data, timestamp: 0)
+        message.increaseAttemptCount()
+        message.increaseAttemptCount()
+        message.increaseAttemptCount()
 
         let bytes = try message.bytes()
+        for v in bytes {
+            print(v, terminator: "")
+        }
+        print("")
 
         let expectedBytes : [Int] = [0,0,0,0,0,0,0,0, 0,3, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 120,121,122]
 
-        // check timestamp bytes
+        // check bytes
         XCTAssertTrue(expectedBytes.count == bytes.count, "Serialized message length (\(bytes.count)) doesn't match expected length (\(expectedBytes.count))")
         for (i, b) in expectedBytes.enumerated() {
             if let v = bytes.subdata(in: i..<i+1).first {
@@ -46,12 +53,6 @@ class MessageTests: XCTestCase {
                 XCTFail("Didn't find data in message at index \(i)")
             }
         }
-
-        // check attempts bytes
-        
-        // check ID bytes
-        
-        // check body bytes
     }
     
 }
