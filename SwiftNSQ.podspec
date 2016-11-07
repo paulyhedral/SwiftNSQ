@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name                    = "SwiftNSQ"
-	s.version                 = "0.1"
+	s.version                 = "0.1.1"
 	s.summary                 = "A client for NSQ written in pure Swift"
 
 	s.homepage                = "https://pilgrimagesoftware.com"
@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
 
 	s.requires_arc            = true
 
-	s.dependency              'SwiftSockets'
+	s.dependency              'SwiftSocket'
 
 end
