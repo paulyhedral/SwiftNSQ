@@ -87,12 +87,7 @@ public class Client {
     }
 
     deinit {
-        do {
-            try self.close()
-        }
-        catch {
-            // ignore
-        }
+        self.close()
     }
 
 
