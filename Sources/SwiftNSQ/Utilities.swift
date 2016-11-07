@@ -25,42 +25,35 @@
 import Foundation
 
 
-/**
- */
-public struct Configuration {
+func bigEndian4Bytes(value : UInt32) -> Data {
 
-    /**
-     */
-    public var hostname : String
-    /**
-     */
-    public var port : Int32
-    /**
-     */
-    public var clientId : String
-    /**
-     */
-    public var outputBufferSize : Int?
-    /**
-     */
-    public var outputBufferTimeout : TimeInterval?
-    /**
-     */
-    public var useTLSv1 : Bool = false
-    /**
-     */
-    public var enableSnappy : Bool = false
-    /**
-     */
-    public var enableDeflate : Bool = false
-    /**
-     */
-    public var deflateLevel : Int?
-    /**
-     */
-    public var sampleRate : Int?
-    /**
-     */
-    public var messageTimeout : Int = 300
+    var data = Data()
+    var convertedNumber = value.bigEndian
+    withUnsafePointer(to: &convertedNumber) {
+        data.append(UnsafeRawPointer($0).assumingMemoryBound(to: UInt8.self), count: 4)
+    }
     
+    return data
+}
+
+func bigEndian8Bytes(value : UInt64) -> Data {
+
+    var data = Data()
+    var convertedNumber = value.bigEndian
+    withUnsafePointer(to: &convertedNumber) {
+        data.append(UnsafeRawPointer($0).assumingMemoryBound(to: UInt8.self), count: 8)
+    }
+
+    return data
+}
+
+func bigEndian2Bytes(value : UInt16) -> Data {
+
+    var data = Data()
+    var convertedNumber = value.bigEndian
+    withUnsafePointer(to: &convertedNumber) {
+        data.append(UnsafeRawPointer($0).assumingMemoryBound(to: UInt8.self), count: 2)
+    }
+
+    return data
 }
