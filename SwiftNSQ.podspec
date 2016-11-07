@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name                    = "SwiftNSQ"
-	s.version                 = "0.1.3"
+	s.version                 = "0.1.4"
 	s.summary                 = "A client for NSQ written in pure Swift"
 
 	s.homepage                = "https://pilgrimagesoftware.com"
